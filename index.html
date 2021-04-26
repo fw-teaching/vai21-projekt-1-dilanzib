@@ -18,7 +18,7 @@
     <div id="container">
         <div id="chart"></div>
         <canvas id="canvas"></canvas>
-        <input type='file' onchange="readURL(this);" />
+        <input type='file' multiple='false' onchange="readURL(this);" />
         <img id="image" src=" " alt="your image" style="visibility: hidden;">
      
    </div>
@@ -32,8 +32,6 @@
             readImage.onload = function (event) {
             $('#image')
                 .attr('src', event.target.result)
-                .width(600)
-                .height(400);
             };
             readImage.readAsDataURL(input.files[0]);
 

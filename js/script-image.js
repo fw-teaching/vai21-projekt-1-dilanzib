@@ -1,13 +1,10 @@
 readImg(document.getElementById("image"));
 
-d3.selectAll("#chart > *").remove();   //raderar förra charten så att det inte den föregående blir kvar efter att en ny 
-          
-
 function readImg(image) {
     var img = image;
     var redD =[];
     var greenD =[]; 
-     var blueD =[];
+    var blueD =[];
 
     img.onload = function(){
         var canvas = document.getElementById("canvas");
@@ -32,9 +29,8 @@ function readImg(image) {
             blueD[pixelData[i + 2]]++;
         }
 
-        console.log(redD);
-        console.log(greenD);
-        console.log(blueD);
+        console.log("Röd, grön, blå")
+        console.log(redD, greenD, blueD);
 
         /**  H I S T O G R A M M E T  */ 
         var height = 400;
@@ -48,16 +44,16 @@ function readImg(image) {
                           .style('background', '#d3d3d3');
     
         
-        //för att varje färg har olika max värden 
+        //varje färg har olika max värden 
         var yRed = d3.scaleLinear()
                 .domain([0, d3.max(redD)])
-                .range([0, height-10]);
+                .range([0, height-5]);
          var yGreen = d3.scaleLinear()
                 .domain([0, d3.max(greenD)])
-                .range([0, height-10]);
+                .range([0, height-5]);
          var yBlue = d3.scaleLinear()
                 .domain([0, d3.max(blueD)])
-                .range([0, height-10]);
+                .range([0, height-5]);
 
 
           chart.selectAll('red')
