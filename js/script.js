@@ -1,7 +1,5 @@
-readImg(document.getElementById("blah"));
-let activeColor='red';
-let yAxis=false;
 
+readImg(document.getElementById("blah"));
 
 function readImg(image) {
     var img = image;
@@ -21,7 +19,7 @@ function readImg(image) {
         var imgData = context.getImageData(0, 0, canvas.width, canvas.height);
         var pixelData = imgData.data;
         //console.log(pixelData);
-        
+
         for (var i = 0; i < 256; i++) { //an img might not have all 256 values of each color
             redD[i] = 0;
             greenD[i] = 0;
@@ -33,24 +31,11 @@ function readImg(image) {
             blueD[pixelData[i + 2]]++;
           }
 
-          /*d3.select('#red')
-            .data(redD).enter()
-            .append('text')
-            .text(function(d) {
-              return d;
-            });
-
-            d3.select("#list").selectAll("li")
-              .data(redD).enter()
-              .text(function(d) { return "Red " + d; })
-              .enter()
-              .append("li")
-              .text(function(d) 
-                  { return "Redis " + d; });*/
-
-                  v 
+          //console.log(greenD);
       }
+    
 }
+
 
 
 

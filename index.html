@@ -8,14 +8,45 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" defer></script>
     <script src="https://d3js.org/d3.v6.js" defer></script>
     <script src="js/script-image.js" defer></script>
+    <script src="js/script-chart.js" defer></script>
+    <script src="js/script.js" defer></script> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
     <title>Projekt 1</title>
 </head>
 <body>
-    <h1>Projekt 1</h1>
-    <div class="container">
-        <img id="staticImg" src="./imgs/bild.jpg" style="visibility: hidden;">
+
+    <h1>Projekt 1 </h1>
+    <ul id = "red"> </ul> 
+    <div id="row"><svg width="1" height="1"></svg></div>
+    <div id="row"><canvas id="C"></canvas></div>
+    
+    <div id="container">
         <canvas id="canvas"></canvas>
-    </div>
+        <input type='file' onchange="readURL(this);" />
+        <img id="blah" src="./imgs/Ebbets_small.jpg" alt="your image" style="visibility: hidden;">
+  
+        <svg></svg>
+        <div id="chart"></div>
+
+       
+   </div>
+
+
+   <script>
+       
+      function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+            $('#blah')
+                .attr('src', e.target.result)
+                .width(500)
+                .height(400);
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+        }
+   </script>
 </body>
 </html>
