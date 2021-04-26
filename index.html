@@ -8,28 +8,19 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" defer></script>
     <script src="https://d3js.org/d3.v6.js" defer></script>
     <script src="js/script-image.js" defer></script>
-    <script src="js/script-chart.js" defer></script>
-    <script src="js/script.js" defer></script> 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
     <title>Projekt 1</title>
 </head>
 <body>
 
-    <h1>Projekt 1 </h1>
-    <ul id = "red"> </ul> 
-    <div id="row"><svg width="1" height="1"></svg></div>
-    <div id="row"><canvas id="C"></canvas></div>
-    
+    <h1>Projekt 1 </h1>  
     <div id="container">
+        <div id="chart"></div>
         <canvas id="canvas"></canvas>
         <input type='file' onchange="readURL(this);" />
-        <img id="blah" src="./imgs/Ebbets_small.jpg" alt="your image" style="visibility: hidden;">
-  
-        <svg></svg>
-        <div id="chart"></div>
-
-       
+        <img id="image" src=" " alt="your image" style="visibility: hidden;">
+     
    </div>
 
 
@@ -37,16 +28,19 @@
        
       function readURL(input) {
         if (input.files && input.files[0]) {
-            var reader = new FileReader();
-            reader.onload = function (e) {
-            $('#blah')
-                .attr('src', e.target.result)
-                .width(500)
+            var readImage = new FileReader();
+            readImage.onload = function (event) {
+            $('#image')
+                .attr('src', event.target.result)
+                .width(600)
                 .height(400);
             };
-            reader.readAsDataURL(input.files[0]);
+            readImage.readAsDataURL(input.files[0]);
+
+            d3.selectAll("#chart > *").remove();   //raderar förra charten så att det inte den föregående blir kvar efter att en ny 
+          
         }
-        }
+    }
    </script>
 </body>
 </html>
