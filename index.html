@@ -7,6 +7,7 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" defer></script>
     <script src="https://d3js.org/d3.v6.js" defer></script>
+    <link rel="stylesheet" href="./style.css"> <!-- CSS -->
     <script src="js/script-image.js" defer></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
@@ -18,27 +19,10 @@
     <div id="container">
         <div id="chart"></div>
         <canvas id="canvas"></canvas>
-        <input type='file' multiple='false' onchange="readURL(this);" />
+        <input type='file' onchange="readURL(this);" id="button"/>
         <img id="image" src=" " alt="your image" style="visibility: hidden;">
      
    </div>
 
-
-   <script>
-       
-      function readURL(input) {
-        if (input.files && input.files[0]) {
-            var readImage = new FileReader();
-            readImage.onload = function (event) {
-            $('#image')
-                .attr('src', event.target.result)
-            };
-            readImage.readAsDataURL(input.files[0]);
-
-            d3.selectAll("#chart > *").remove();   //raderar förra charten så att det inte den föregående blir kvar efter att en ny 
-          
-        }
-    }
-   </script>
 </body>
 </html>

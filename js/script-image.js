@@ -1,3 +1,18 @@
+//previewar bilderna användaren väljer 
+function readURL(img) {
+  if (img.files && img.files[0]) {
+      var readImage = new FileReader();
+      readImage.onload = function (event) {
+      $('#image')
+          .attr('src', event.target.result)
+      };
+      readImage.readAsDataURL(img.files[0]);
+
+      d3.selectAll("#chart > *").remove();   //raderar förra charten så att det inte den föregående blir kvar efter att en ny 
+  }
+}
+
+
 readImg(document.getElementById("image"));
 
 function readImg(image) {
@@ -5,7 +20,7 @@ function readImg(image) {
     var redD =[];
     var greenD =[]; 
     var blueD =[];
-
+2
     img.onload = function(){
         var canvas = document.getElementById("canvas");
         var context = canvas.getContext("2d");
@@ -18,7 +33,7 @@ function readImg(image) {
         var imgData = context.getImageData(0, 0, canvas.width, canvas.height);
         var pixelData = imgData.data;
         
-        for (var i = 0; i < 256; i++) { //en färg kanske inte har alla 256 värden
+        for (var i = 0; i < 256; i++) { //en färg kanske inte har alla 256 värden, drf loopas det igenom
           redD[i] = 0;
           greenD[i] = 0;
           blueD[i] = 0;
@@ -57,7 +72,7 @@ function readImg(image) {
 
 
           chart.selectAll('red')
-                .data(redD).enter()
+                .data(redD).enter() //loopar in redD arrayen till histogrammet
                   .append('rect')
                     .attr('x', function(d , i){
                       return i * barWidth;
